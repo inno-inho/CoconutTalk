@@ -16,3 +16,6 @@ https://www.youtube.com/redirect?event=comments&redir_token=QUFFLUhqbXVjNkZoQVVy
 
 ## Tainwind Youtube
 https://youtu.be/Y3Vauv7Rpkk?si=uIz9n7VKZaoOggtx
+
+## TypeScript Youtube
+https://youtu.be/vs9lFblZ7oE?si=0tqi5_Nz9jKBWM6G
