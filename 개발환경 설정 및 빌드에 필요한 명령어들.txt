@@ -1,5 +1,4 @@
-Coconut
-
+MySQL과 Redis 서비스에서 실행중인거 중지하기(로컬에서 쓰는 port번호랑 Docker Container안에서 돌아가는 port번호랑 같으면 안 돌아가니까)
 
 # Docker 관련
 해당 컨테이너만 빠르게 껏다 켜는 명령어
