@@ -15,6 +15,6 @@ public class FrontTestController {
 
         log.info("Front랑 BackEnd 연동 확인");
 
-        return "Hello from Spring Boot, 부탁한다";
+        return "Hello from Spring Boot";
     }
 }
