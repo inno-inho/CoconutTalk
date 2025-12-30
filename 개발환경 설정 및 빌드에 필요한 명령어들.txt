@@ -3,10 +3,7 @@ Coconut
 
 # Docker 관련
 
-#############################
-- 도커 돌리기 전에 컴퓨터의 서비서에서 MySQL이랑 Redis 중지 한 다음에 도커 실행해주세요(Local과 port 충돌 방지)
-
-컨테이너만 정지 및 삭제
+컨테이너만 정지 및 삭제(개발 시)
 docker-compose -f docker-compose.dev.yml down
 
 개발 시 도커 실행 명령어

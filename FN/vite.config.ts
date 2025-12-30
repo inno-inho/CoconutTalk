@@ -10,7 +10,13 @@ export default defineConfig({
       '/api': {
         target: 'http://backend:8080',
         changeOrigin: true,
-        // rewrite: (path) => path.replace(/^\/api/, '') // 이 부분 슬래시 확인!
+        // rewrite: (path) => path.replace(/^\/api/, '') // 백엔드 API가 /api를 포함하지 않는다면 이 주석 해제하면 됨
+      },
+      // 웹소켓(WebSocket) 프록시 설정
+      '/ws': {
+        target: 'http://backend:8080',
+        ws: true, // WebSocket 프록시 활성화
+        changeOrigin: true,
       }
     }
   }
