@@ -27,9 +27,14 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
-  const [user, setUser] = useState<User | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
+  const [user, setUser] = useState<User | null>({
+    email: "test@example.com",
+    nickname: "채팅 개발자",
+    role: "USER",
+    profileImageUrl: "https://via/placeholder.com/150"
+  });
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
 
   // 사용자 정보 조회 함수(재사용을 위해 useCallback 사용)
@@ -50,20 +55,8 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   // 앱 실행 시 최초 1회 인증 상태 체크
   useEffect(() => {
-    const checkAuthStatus = async () => {
-      const token = localStorage.getItem("accessToken");
-      
-      if (token) {
-        // 토큰이 있을 때만 정보 조회 시도
-        await fetchUserInfo();
-      }
-      
-      // 토큰이 없거나 조회가 끝난 후 로딩 종료
-      setIsLoading(false);
-    };
-
-    checkAuthStatus();
-  }, [fetchUserInfo]);
+    console.log("개발 모드, 가짜 유저 정보 사용 중: " + user?.nickname);
+  }, []);
 
   // 로그인 상태 갱신 함수
   const login = async () => {
