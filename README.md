@@ -6,6 +6,22 @@
 회원가입시 이메일 인증만  
 비밀번호 변경 : 계정 소유 증명이 핵심이기 때문에 이메일 인증을 필수로 하고, 필요 시 본인인증을 추가  
 
+## FN 폴더 맞추기
+```
+FN/
+ ┣ src/
+ ┃ ┣ components/   # 재사용 가능한 컴포넌트
+ ┃ ┣ pages/        # 페이지 단위 컴포넌트
+ ┃ ┣ hooks/        # 커스텀 훅
+ ┃ ┣ assets/       # 이미지, CSS
+ ┃ ┣ App.jsx
+ ┃ ┗ main.jsx
+ ┣ public/         # 정적 파일
+ ┣ package.json
+ ┣ vite.config.js
+ ┗ README.md
+```
+
 ---
 
 ## 2. 핵심 기능 요약
@@ -280,7 +296,6 @@ POST   api/notices/{id}/files           // 파일 첨부
 GET    api/notices/{id}/files/{fileId}  // 파일 다운로드
 
 POST   api/notices/{id}/comments
-```
 ```
 
 ---
