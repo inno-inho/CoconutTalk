@@ -61,3 +61,8 @@ npm uninstall @vitejs/plugin-react
 # 설치
 npm install @vitejs/plugin-react-swc
 
+
+
+
+- 원격이랑 로컬 어느 게 최신인지 비교하는 명령어
+git log --oneline --decorate --graph dev..origin/dev
