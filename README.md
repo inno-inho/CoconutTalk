@@ -168,49 +168,87 @@
 
 ### NOTICE
 - id (PK)
-- titl회GGGET    /user/{email}
-PUT    /user/{email}
-DELETE /user/{email}
-GET    /user/search
-PUT    /user/profile/image
-PUT    /user/nickname
+- title
+- content
+- author_id
+- view_count
+- is_pinned          -- 상단 고정 여부
+- is_important       -- 중요 공지 여부
+- open_at            -- 예약 공개 시간
+- created_at
+- updated_at
+
+---
+
+### NOTICE_COMMENT
+- id (PK)
+- notice_id (FK)
+- user_id (FK)
+- parent_id (nullable)
+- content
+- created_at
+
+---
+
+## 5. API 엔드포인트 설계
+
+### 5.1 인증 / 회원
+```
+POST   api/auth/signup                   //  회원가입(is_verified=true)인지 확인 후 가입
+POST   api/auth/login                    //  로그인
+POST   api/auth/logout                   //  로그아웃
+POST   api/auth/refresh                  //  리프레시토큰발급
+POST   api/auth/email/send               //  이메일 인증 요청
+POST   api/auth/email/verify             //  이메일 인증 완료
+
+```
+
+### 5.2 회원 / 프로필
+```
+GET    api/user                         // 회원정보 조회
+GET    api/user/{email}
+PUT    api/user/{email}
+DELETE api/user/{email}
+GET    api/user/search
+PUT    api/user/profile/image
+PUT    api/user/nickname
 ```
 
 ### 5.3 친구
 ```
-POST   /friends/{userId}
-PATCH /friends/{userId}/accept
-DELETE /friends/{userId}
-POST   /friends/{userId}/block
-GET    /friends
+POST   api/friends/{userId}
+PATCH api/friends/{userId}/accept
+DELETE api/friends/{userId}
+POST   api/friends/{userId}/block
+GET    api/friends
 ```
 
 ### 5.4 채팅방
 ```
-POST   /chatrooms
-GET    /chatrooms
-GET    /chatrooms/{roomId}
-POST   /chatrooms/{roomId}/join
-POST   /chatrooms/{roomId}/leave
-PUT    /chatrooms/{roomId}/name
-POST   /chatrooms/{roomId}/invite
-POST   /chatrooms/{roomId}/kick
-PUT    /chatrooms/{roomId}/owner
+POST   api/chatrooms
+GET    api/chatrooms
+GET    api/chatrooms/{roomId}
+POST   api/chatrooms/{roomId}/join
+POST   api/chatrooms/{roomId}/leave
+PUT    api/chatrooms/{roomId}/name
+POST   api/chatrooms/{roomId}/invite
+POST   api/chatrooms/{roomId}/kick
+PUT    api/chatrooms/{roomId}/owner
 ```
 
 ### 5.5 채팅 옵션
 ```
-PUT    /chatrooms/{roomId}/mute
-PUT    /chatrooms/{roomId}/pin
+PUT    api/chatrooms/{roomId}/mute
+PUT    api/chatrooms/{roomId}/pin
 ```
 
 ### 5.6 메시지
 ```
-GET    /chatrooms/{roomId}/messages
-POST   /chatrooms/{roomId}/messages
-DELETE /messages/{messageId}
-DELETE /messages/{messageId}/all
-GET    /chatrooms/{roomId}/search
+GET    api/chatrooms/{roomId}/messages
+POST   api/chatrooms/{roomId}/messages
+DELETE api/messages/{messageId}
+DELETE api/messages/{messageId}/all
+GET    api/chatrooms/{roomId}/search
 ```
 
 ### 5.7 WebSocket
@@ -224,24 +262,24 @@ SEND      /app/typing/{roomId}
 
 ### 5.8 공지사항
 ```
-POST   /notices                     // 공지 등록 (관리자)
-GET    /notices                     // 공지 목록 조회
-GET    /notices/{id}                // 공지 상세 조회
-PUT    /notices/{id}                // 공지 수정 (관리자)
-DELETE /notices/{id}                // 공지 삭제 (관리자)
+POST   api/notices                     // 공지 등록 (관리자)
+GET    api/notices                     // 공지 목록 조회
+GET    api/notices/{id}                // 공지 상세 조회
+PUT    api/notices/{id}                // 공지 수정 (관리자)
+DELETE api/notices/{id}                // 공지 삭제 (관리자)
 
-PUT    /notices/{id}/pin             // 상단 고정/해제
-PUT    /notices/{id}/important       // 중요 공지 설정
+PUT    api/notices/{id}/pin             // 상단 고정/해제
+PUT    api/notices/{id}/important       // 중요 공지 설정
 
-POST   /notices/{id}/schedule        // 예약 공지 설정
+POST   api/notices/{id}/schedule        // 예약 공지 설정
 
-GET    /notices/search               // 제목/내용 검색
-GET    /notices/filter               // 기간/중요 공지 필터
+GET    api/notices/search               // 제목/내용 검색
+GET    api/notices/filter               // 기간/중요 공지 필터
 
-POST   /notices/{id}/files           // 파일 첨부
-GET    /notices/{id}/files/{fileId}  // 파일 다운로드
+POST   api/notices/{id}/files           // 파일 첨부
+GET    api/notices/{id}/files/{fileId}  // 파일 다운로드
 
-POST   /notices/{id}/comments
+POST   api/notices/{id}/comments
 ```
 ```
 
