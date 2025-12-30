@@ -21,28 +21,28 @@ services:
       - "6379:6379"
 
   # 3. Backend (Spring Boot)
-  backend:
-    build: ./BN
-    container_name: coconutTalk-backend-dev
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/${DB_NAME}
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: ${DB_ROOT_PASSWORD}
-      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILE}
-      SPRING_REDIS_HOST: redis
-      SPRING_REDIS_PORT: 6379
-    ports:
-      - "8080:8080"
-    depends_on:
-      - db
-      - redis
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 30s
+  # backend:
+  #   build: ./BN
+  #   container_name: coconutTalk-backend-dev
+  #   environment:
+  #     SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/${DB_NAME}
+  #     SPRING_DATASOURCE_USERNAME: root
+  #     SPRING_DATASOURCE_PASSWORD: ${DB_ROOT_PASSWORD}
+  #     SPRING_PROFILES_ACTIVE: ${SPRING_PROFILE}
+  #     SPRING_REDIS_HOST: redis
+  #     SPRING_REDIS_PORT: 6379
+  #   ports:
+  #     - "8080:8080"
+  #   depends_on:
+  #     - db
+  #     - redis
+  #   restart: unless-stopped
+  #   healthcheck:
+  #     test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 5
+  #     start_period: 30s
 
   # 4. Frontend (React + Vite)
   frontend:
@@ -50,8 +50,8 @@ services:
       context: ./FN
       dockerfile: Dockerfile
     container_name: react-dev
-    depends_on:     
-      - backend
+    # depends_on:     // 백엔드도 도커로 할거면 의존관계 풀어야함
+    #   - backend
     environment:
       VITE_API_URL: http://localhost:8080
       CHOKIDAR_USEPOLLING: "true" # 파일 변경 감지 성능 향상 (Windows 환경 필수), Hot reload
