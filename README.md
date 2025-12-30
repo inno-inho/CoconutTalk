@@ -197,7 +197,7 @@
 POST   api/auth/signup                   //  회원가입(is_verified=true)인지 확인 후 가입
 POST   api/auth/login                    //  로그인
 POST   api/auth/logout                   //  로그아웃
-POST   api/auth/refresh                  //  리프레시토큰발급
+POST   api/auth/reissue                  //  리프레시토큰발급
 POST   api/auth/email/send               //  이메일 인증 요청
 POST   api/auth/email/verify             //  이메일 인증 완료
 
