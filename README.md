@@ -13,7 +13,10 @@ FN/
  ┃ ┣ components/   # 재사용 가능한 컴포넌트
  ┃ ┣ pages/        # 페이지 단위 컴포넌트
  ┃ ┣ hooks/        # 커스텀 훅
- ┃ ┣ assets/       # 이미지, CSS
+ ┃ ┣ assets/      # 이미지, CSS
+ ┃ ┃  ┣ font/
+ ┃ ┃  ┣ image/
+ ┃ ┃  ┗ css/
  ┃ ┣ App.jsx
  ┃ ┗ main.jsx
  ┣ public/         # 정적 파일
