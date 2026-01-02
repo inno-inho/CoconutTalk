@@ -7,6 +7,7 @@ import { AuthProvider, useAuth } from './context/AuthContext';
 import ConnectionTest from './components/test/ConnectionTest';
 import LoginPage from './components/user/LoginPage';
 import MainLayout from './components/layout/MainLayout';
+import ChatPage from './components/chat/ChatPages';
 
 const App: React.FC = () => {
 
@@ -27,8 +28,11 @@ const App: React.FC = () => {
                 <MainLayout>
                   <ConnectionTest />
                 </MainLayout>
-                } 
+                }
               />
+
+              {/* ChatPages */}
+                <Route path='/chatPages' element={<MainLayout><ChatPage /></MainLayout>}/>
             </Routes>
           </AuthProvider>
         </Router>
